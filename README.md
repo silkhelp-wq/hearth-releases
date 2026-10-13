@@ -1,81 +1,77 @@
-# Hearth — Downloads
+<p align="center">
+  <img src="assets/banner.svg" alt="Hearth: voice, video, screen-share and chat you host yourself" width="100%">
+</p>
 
-**Your own private voice, video, screen-share, and chat hangout.** Like the big chat apps,
-but you host it and you own it. No accounts, no ads, no company reading your
-messages.
+<p align="center"><b>Downloads.</b> Your own private hangout, like the big chat apps, but hosted by your crew.<br>
+No ads, no data mining, signed updates.</p>
 
-This page is where you **download** Hearth. (The source code lives elsewhere and
-is private — but the apps are free for anyone to use.)
+<p align="center"><img src="assets/diagram-join.svg" alt="Joining a hall: get the app, sign in, link the app, hang out" width="100%"></p>
 
----
+## // The easy way: your hall's website
 
-## 1️⃣ Before you download — two things
+Your host sends you the hall's address (for example
+`https://hearthone.duckdns.org:4443`). Open it in a browser, sign in, and it
+offers **the right installer for your computer**. It's the same file as
+below, but that page also links the app to your account with a short code.
 
-**One:** get the **server address** from whoever hosts your group's Hearth.
+## // Or grab it here
 
-**Two:** look at how it starts. If it starts with **`http://100.`** your group
-uses **Tailscale** (a free private network) and Hearth **cannot connect
-without it**: ask your host for the Tailscale invite, install it from
-[tailscale.com/download](https://tailscale.com/download), accept the invite,
-and check it shows **Connected**. (Address starts with `https://`? Skip this.)
+Open **[the latest release](../../releases/latest)** and pick your system:
 
-## 2️⃣ Download the app (everyone)
+| Your computer | Download the file ending in | First launch |
+|---|---|---|
+| **Windows** | `.exe` (one click: removes old copies, keeps your settings) | If SmartScreen warns: **More info → Run anyway** |
+| **Mac, Apple chip** (M1 and newer) | `-arm64.dmg` | Drag Hearth to Applications. If it says "damaged", run `xattr -cr /Applications/Hearth.app` in Terminal once |
+| **Mac, Intel** | `.dmg` without `arm64` | Same as above |
+| **Linux** | `.AppImage` (any distro) or `.deb` (Ubuntu/Debian) | Or run `bash install-linux.sh`: installs, adds Hearth to your menu, cleans up old copies |
 
-Grab the latest from **[Releases](../../releases/latest)** and pick your system:
+Then open Hearth: it suggests your hall (or pick **Another server…**),
+shows a code to type on the hall website, and you're in. Set your name and a
+small picture under **Settings → Profile**.
 
-| Your computer | Download the file ending in |
-|---|---|
-| 🪟 **Windows** | `.exe` |
-| 🍎 **Mac** | `.dmg` |
-| 🐧 **Linux** | `.AppImage` (works everywhere) or `.deb` (Ubuntu/Debian) |
+> **On a phone or someone else's computer?** Every hall also runs the full
+> app in the browser at `https://your-hall/app`.
 
-**First time opening it,** your computer may warn "unknown developer" — that's
-normal for a small private app:
-- **Windows:** More info → Run anyway
-- **Mac:** right-click the app → Open → Open
-- **Linux:** right-click → Properties → allow executing → double-click
+> **Hall address starts with `http://100.`?** It runs on a home PC over
+> **[Tailscale](https://tailscale.com/download)**. Install it, accept your
+> host's invite, and check that it says **Connected**.
 
-Then paste in the server address your host gave you, pick a name, and you're in.
+## // Staying up to date
 
-**🐧 Linux shortcut:** download `install-linux.sh` from the same release and run
-`bash install-linux.sh` — it grabs the latest Hearth, adds it to your app menu,
-and removes any old copies. Hearth then keeps itself up to date in place.
+Hearth updates itself from your hall, and **every update is signed**. The
+app checks the signature and every file before it runs anything, so even a
+hacked server can't push fake code.
 
-**Staying current matters:** Hearth checks for updates when it starts and offers
-to install them. If you skip updates for a long time you may not be able to join
-your host — the app and server need to speak the same language.
+- **App updates** show a banner. One click downloads and installs it, and
+  Hearth restarts.
+- **Interface updates** (new screens and fixes, about 1 MB) offer
+  **Reload now**, or apply the next time you open Hearth. If one ever
+  misbehaves, Hearth goes back to its built-in interface on its own.
 
-> If your host's address starts with `http://100.`, first install the free
-> **[Tailscale](https://tailscale.com/download)** app and accept your host's
-> invite — that's the private tunnel the group uses.
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
----
+## // Smooth 4K screen sharing
 
-## 3️⃣ Host your own server (one person)
+Install **ffmpeg** and choose your GPU encoder (**NVENC / AMF / QSV /
+VideoToolbox**) in the share dialog:
+- Windows: `winget install Gyan.FFmpeg`
+- Mac: `brew install ffmpeg`
+- Linux: your package manager
 
-One person in the group runs the server on a computer that stays on. Download
-**`hearth-server-<version>.tar.gz`** from
-[Releases](../../releases/latest), unzip it, and follow the simple guide inside.
-The short version:
+This is essential on Linux with NVIDIA.
 
-- **At home:** install [Node.js](https://nodejs.org), then run `bash install.sh`
-  (Mac/Linux) or the PowerShell installer (Windows). Use
-  [Tailscale](https://tailscale.com) so friends can reach you with no router
-  fuss.
-- **On a cheap online server (VPS):** same, plus set your public IP and open
-  ports 4443 (TCP) and 44444 (UDP+TCP).
-- **With Docker:** `docker compose up -d`.
+<p align="center"><img src="assets/shot-voice.jpg" alt="A Hearth voice hall" width="100%"></p>
 
-Full step-by-step for a total beginner is included in the download.
+## // Hosting a hall (one person)
 
----
+On a cheap VPS, one command sets up everything, including the firewall,
+fail2ban and TLS:
 
-## ✨ What you get after installing
+```bash
+curl -fsSL https://github.com/silkhelp-wq/hearth-releases/releases/latest/download/vps-setup.sh | sudo bash
+```
 
-🎤 Voice rooms · 📹 Camera · 🖥️ Screen share (up to 4K, pop-out or
-picture-in-picture) · 💬 Chat with reactions, emojis, GIFs, and video ·
-🎵 Shared music jukebox · 👑 Roles and permissions · 🔒 Private and yours
+At home, download `hearth-server-<version>.tar.gz` from the release, unzip
+it, and follow the beginner guide inside (Node.js 22+; Docker works too).
 
----
-
-*Hearth is made by the Hearth authors. Installers here are free to use.*
+<p align="center"><sub>Hearth is free to use.</sub></p>
