@@ -1,0 +1,16 @@
+name: Something's broken
+description: Report a bug in Hearth
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+      placeholder: Joined Lounge, my mic showed green but nobody could hear me.
+    validations: { required: true }
+  - type: input
+    id: version
+    attributes:
+      label: App version and system
+      placeholder: Hearth 0.14.0 on Windows 11

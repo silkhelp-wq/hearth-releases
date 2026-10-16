@@ -32,10 +32,6 @@ small picture under **Settings → Profile**.
 > **On a phone or someone else's computer?** Every hall also runs the full
 > app in the browser at `https://your-hall/app`.
 
-> **Hall address starts with `http://100.`?** It runs on a home PC over
-> **[Tailscale](https://tailscale.com/download)**. Install it, accept your
-> host's invite, and check that it says **Connected**.
-
 ## // Staying up to date
 
 Hearth updates itself from your hall, and **every update is signed**. The
@@ -62,16 +58,21 @@ This is essential on Linux with NVIDIA.
 
 <p align="center"><img src="assets/shot-voice.jpg" alt="A Hearth voice hall" width="100%"></p>
 
-## // Hosting a hall (one person)
+## // Bugs and ideas
 
-On a cheap VPS, one command sets up everything, including the firewall,
-fail2ban and TLS:
+Press **Feedback** in the app. Say what happened (or what you'd like), tick
+the boxes for system info or a screenshot if you want, and send. It shows up
+here under **[Issues](../../issues)** and the app shows you its status:
+planned, maybe, being fixed, done.
 
-```bash
-curl -fsSL https://github.com/silkhelp-wq/hearth-releases/releases/latest/download/vps-setup.sh | sudo bash
-```
+**What's public:** your words, the app version and system details, and the
+recent error lines, all with names, addresses and IPs scrubbed out.
+**What's not:** your name, your email and any screenshot. Screenshots go only
+to the maintainer, because they can show chat.
 
-At home, download `hearth-server-<version>.tar.gz` from the release, unzip
-it, and follow the beginner guide inside (Node.js 22+; Docker works too).
+So write it like a public post: leave out passwords, addresses and anything
+private.
+
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 <p align="center"><sub>Hearth is free to use.</sub></p>

@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Easier, send it from the Hearth app
+    url: https://github.com/silkhelp-wq/hearth-releases#-bugs-and-ideas
+    about: The Feedback button attaches your app version for you, posts without your name, and you don't need a GitHub account.
